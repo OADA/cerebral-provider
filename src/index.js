@@ -1,23 +1,7 @@
 import { Provider } from 'cerebral'
-import uuid from 'uuid'
-import urlLib from 'url'
-import websocket from './websocket'
-import Promise from 'bluebird'
-import axios from 'axios'
-import oada from '../../oadaLib';
-let watches = {};
-let request = axios;
-let socket;
-
-let watch = function({url, token, signalName, payload}) {
-  let signal = this.context.controller.getSignal(signalName);
-  return oada.watch({url, token, signal, payload}) 
-}
-
-oada.watch = watch;
-console.log(oada)
-
-export default Provider (oada);/*{
+import oada from '@oada/oada-cache';
+console.log(oada);
+export default Provider(oada);/*{
   
   authorize: oada.authorize,/*({domain, options}) {
 		//Get token from the cache
