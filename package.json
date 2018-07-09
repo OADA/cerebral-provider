@@ -1,12 +1,13 @@
 {
   "name": "@oada/cerebral-provider",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "",
   "main": "./build/index.js",
   "scripts": {
     "test": "mocha -w --require babel-polyfill --compilers js:babel-register test/**/*.test.js",
     "build": "babel src --out-dir build --presets=env",
     "prepublish": "npm run build",
+    "build-watch": "babel --watch src --out-dir build --presets=env",
     "dev": "cpx --watch --verbose '../oada-cache/**' './node_modules/@oada/oada-cache/'"
   },
   "author": "",
