@@ -25,6 +25,11 @@ const _delete = function _delete(payload) {
   connections[payload.connection_id].delete(payload);
 }
 
+
+const disconnect = function _disconnect(payload) {
+  connections[payload.connection_id].delete(payload);
+}
+
 const resetCache = function resetCache(payload) {
   connections[payload.connection_id].clearCachee(payload);
 }
@@ -35,5 +40,6 @@ export default Provider({
   put,
   post,
   delete: _delete,
-  resetCache
+  resetCache,
+  disconnect,
 });
