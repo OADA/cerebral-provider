@@ -2,10 +2,13 @@ import { Provider } from 'cerebral'
 import oada from '@oada/oada-cache';
 
 var connections = {};
+var currentIndex = 0;
 
 const connect = function connect(payload) {
   let conn = oada.connect(payload);
+  conn.connection_id = currentIndex++;
   connections[conn.connection_id] = conn;
+  return conn;
 }
 
 const get = function get(payload) {

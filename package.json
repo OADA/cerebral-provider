@@ -1,6 +1,6 @@
 {
   "name": "@oada/cerebral-provider",
-  "version": "0.8.7",
+  "version": "0.8.8",
   "description": "",
   "main": "./build/index.js",
   "scripts": {
