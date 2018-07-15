@@ -30,11 +30,11 @@ const _delete = function _delete(payload) {
 
 
 const disconnect = function _disconnect(payload) {
-  connections[payload.connection_id].delete(payload);
+  connections[payload.connection_id].disconnect();
 }
 
 const resetCache = function resetCache(payload) {
-  connections[payload.connection_id].clearCachee(payload);
+  connections[payload.connection_id].resetCache(payload);
 }
 
 export default Provider({
