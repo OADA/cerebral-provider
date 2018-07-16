@@ -1,12 +1,11 @@
 import { Provider } from 'cerebral'
 import oada from '@oada/oada-cache';
-
+import uuid from 'uuid';
 var connections = {};
-var currentIndex = 0;
 
 const connect = function connect(payload) {
   return oada.connect(payload).then((conn) => {
-    conn.connection_id = currentIndex++;
+    conn.connection_id = uuid();
     connections[conn.connection_id] = conn;
     return conn;
   })
