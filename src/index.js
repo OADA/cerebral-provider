@@ -5,10 +5,11 @@ var connections = {};
 var currentIndex = 0;
 
 const connect = function connect(payload) {
-  let conn = oada.connect(payload);
-  conn.connection_id = currentIndex++;
-  connections[conn.connection_id] = conn;
-  return conn;
+  return oada.connect(payload).then((conn) => {
+    conn.connection_id = currentIndex++;
+    connections[conn.connection_id] = conn;
+    return conn;
+  })
 }
 
 const get = function get(payload) {
@@ -39,10 +40,4 @@ const resetCache = function resetCache(payload) {
 
 export default Provider({
   connect,
-  get,
-  put,
-  post,
-  delete: _delete,
-  resetCache,
-  disconnect,
 });
