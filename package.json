@@ -1,6 +1,6 @@
 {
   "name": "@oada/cerebral-provider",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "",
   "main": "./build/index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
-    "@oada/oada-cache": "^1.1.0",
+    "@oada/oada-cache": "^1.1.1",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-latest": "^6.24.1",
