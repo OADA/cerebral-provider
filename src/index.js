@@ -3,39 +3,42 @@ import oada from '@oada/oada-cache';
 import uuid from 'uuid';
 var connections = {};
 
-const connect = function connect(payload) {
-  if (payload.connection_id && connections[payload.connection_id]) return Promise.resolve(connections[payload.domain]);
-  return oada.connect(payload).then((conn) => {
-    conn.connection_id = payload.connection_id || uuid();
+const connect = function connect(args) {
+  if (args.connection_id && connections[args.connection_id]) return Promise.resolve(connections[args.connection_id]);
+  return oada.connect(args).then((conn) => {
+    conn.connection_id = args.connection_id || uuid();
     connections[conn.connection_id] = conn;
     return conn;
   })
 }
 
-const get = function get(payload) {
-  return connections[payload.connection_id].get(payload);
+const get = function get(args) {
+  if (args.watch && args.watch.signal) {
+    args.watch.func = this.context.controller.getSignal(args.watch.signal);
+  }
+  return connections[args.connection_id].get(args);
 }
 
-const put = function put(payload) {
-  return connections[payload.connection_id].put(payload);
+const put = function put(args) {
+  return connections[args.connection_id].put(args);
 }
 
-const post = function post(payload) {
-  return connections[payload.connection_id].post(payload);
-}
-
-
-const _delete = function _delete(payload) {
-  return connections[payload.connection_id].delete(payload);
+const post = function post(args) {
+  return connections[args.connection_id].post(args);
 }
 
 
-const disconnect = function _disconnect(payload) {
-  return connections[payload.connection_id].disconnect();
+const _delete = function _delete(args) {
+  return connections[args.connection_id].delete(args);
 }
 
-const resetCache = function resetCache(payload) {
-  return connections[payload.connection_id].resetCache(payload);
+
+const disconnect = function _disconnect(args) {
+  return connections[args.connection_id].disconnect();
+}
+
+const resetCache = function resetCache(args) {
+  return connections[args.connection_id].resetCache(args);
 }
 
 export default Provider({
