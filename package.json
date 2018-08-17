@@ -1,6 +1,6 @@
 {
   "name": "@oada/cerebral-provider",
-  "version": "1.9.11",
+  "version": "1.9.15",
   "description": "",
   "main": "./build/index.js",
   "scripts": {
@@ -8,12 +8,12 @@
     "build": "babel src --out-dir build --presets=env",
     "prepare": "npm run build",
     "build-watch": "babel --watch src --out-dir build --presets=env",
-    "dev": "cpx --watch --verbose '../oada-cache/**' './node_modules/@oada/oada-cache/'"
+    "dev": "cpx --watch --verbose './build/index.js' '../TrialsTracker/node_modules/@oada/cerebral-provider/build/'"
   },
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
-    "@oada/oada-cache": "^1.1.7",
+    "@oada/oada-cache": "^1.2.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-latest": "^6.24.1",
