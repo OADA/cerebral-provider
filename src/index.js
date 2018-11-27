@@ -5,8 +5,9 @@ var connections = {};
 
 const connect = function connect(args) {
   if (!args.connection_id) throw 'connection_id not supplied'
-  if (args.domain && connections[args.domain]) return Promise.resolve(connections[args.domain]);
+  if (args.connection_id && connections[args.connection_id]) return Promise.resolve(connections[args.connection_id]);
   return oada.connect(args).then((conn) => {
+    conn.cache = {};
     connections[args.connection_id] = conn;
     return conn;
   })
@@ -46,7 +47,9 @@ const _delete = function _delete(args) {
 
 const disconnect = function _disconnect(args) {
   if (!args.connection_id) throw 'connection_id not supplied'
-  return connections[args.connection_id].disconnect();
+  var connection = connections[args.connection_id];
+  connections[args.connection_id] = undefined;
+  return connection.disconnect();
 }
 
 const resetCache = function resetCache(args) {
