@@ -19,7 +19,7 @@ const get = function get(args) {
     let sigs = args.watch.signals.map((signal) => {
       return this.context.controller.getSignal(signal);
     })
-    args.watch.func = (payload) => {
+    args.watch.function = (payload) => {
       sigs.forEach((signal) => {
         signal(payload)
       })
