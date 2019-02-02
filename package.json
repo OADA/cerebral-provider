@@ -1,6 +1,6 @@
 {
   "name": "@oada/cerebral-provider",
-  "version": "2.0.6",
+  "version": "2.0.8",
   "description": "",
   "main": "./build/index.js",
   "scripts": {
@@ -20,5 +20,8 @@
     "babel-preset-stage-3": "^6.24.1",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
   }
 }

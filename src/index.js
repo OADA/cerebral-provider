@@ -54,6 +54,7 @@ const disconnect = function _disconnect(args) {
 
 const resetCache = function resetCache(args) {
   if (!args.connection_id) throw 'connection_id not supplied'
+  if (!connections[args.connection_id]) return; // reseting a non-existent connection
   return connections[args.connection_id].resetCache(args);
 }
 
