@@ -4,7 +4,9 @@ import uuid from 'uuid';
 var connections = {};
 
 const connect = function connect(args) {
+  console.log('connection');
   if (!args.connection_id) throw 'connection_id not supplied'
+  if (args.connection_id && connections[args.connection_id]) console.log('returning a connection');
   if (args.connection_id && connections[args.connection_id]) return Promise.resolve(connections[args.connection_id]);
   return oada.connect(args).then((conn) => {
     conn.cache = {};
