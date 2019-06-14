@@ -62,10 +62,10 @@ const resetCache = function resetCache(args) {
 
 export default Provider({
   connect,
-  get, 
+  get,
   put,
   post,
   delete: _delete,
   resetCache,
-  disconnect,
-});
+  disconnect
+}, {wrap: false});
