@@ -19,7 +19,11 @@ const get = function get(args) {
   if (!args.connection_id) throw 'connection_id not supplied'
   if (args.watch && args.watch.signals) {
     let sigs = args.watch.signals.map((signal) => {
-      return this.context.controller.getSignal(signal);
+			if (this.context) {
+				return this.context.controller.hasOwnProperty("getSignal") ? 
+               this.context.controller.getSignal(signal) :
+               this.context.controller.getSequence(signal);
+			}
     })
     args.watch.function = (payload) => {
       sigs.forEach((signal) => {
