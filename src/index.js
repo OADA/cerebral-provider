@@ -19,9 +19,9 @@ const get = function get(args) {
   if (!args.connection_id) throw 'connection_id not supplied'
   if (args.watch && args.watch.signals) {
     let sigs = args.watch.signals.map((signal) => {
-      return this.context.controller.getSignal(signal);
+      return this.context.controller.getSequence(signal);;
     })
-    args.watch.function = (payload) => {
+    args.watch.func = (payload) => {
       sigs.forEach((signal) => {
         signal(payload)
       })
