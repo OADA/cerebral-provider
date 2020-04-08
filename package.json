@@ -1,27 +1,30 @@
 {
   "name": "@oada/cerebral-provider",
-  "version": "3.0.4",
+  "version": "3.0.5",
   "description": "",
   "main": "./build/index.js",
   "scripts": {
-    "test": "mocha -w --require babel-polyfill --compilers js:babel-register test/**/*.test.js",
-    "build": "babel src --out-dir build --presets=env",
+    "test": "mocha -w --require @babel/register test/**/*.test.js",
+    "build": "babel src --out-dir build",
     "prepare": "npm run build",
-    "build-watch": "babel --watch src --out-dir build --presets=env",
+    "build-watch": "babel --watch src --out-dir build",
     "dev": "cpx --watch --verbose './build/index.js' '$APP_DIR/node_modules/@oada/cerebral-provider/build/'"
   },
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
-    "@oada/oada-cache": "^3.0.1",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-latest": "^6.24.1",
-    "babel-preset-stage-3": "^6.24.1",
-    "babel-register": "^6.26.0",
-    "chai": "^4.1.2"
+    "@oada/oada-cache": "^3.1.5"
+  },
+  "peerDependencies": {
+    "cerebral": "^5.1.1"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0"
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/register": "^7.9.0",
+    "cerebral": "^5.1.1",
+    "mocha": "^7.1.1",
+    "chai": "^4.1.2"
   }
 }
